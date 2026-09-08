@@ -1,7 +1,0 @@
-{
-  "status": "PASS",
-  "failed_cell": null,
-  "failure_stage": null,
-  "stdout": "imports ready\ndataset rows 6\nEDA {'rows': 6, 'x_min': 0.0, 'x_max': 5.0}\nMODEL Ridge\nRMSE 1.21655251\nPLOT residual.svg\n",
-  "stderr": ""
-}

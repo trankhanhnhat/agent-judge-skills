@@ -24,9 +24,3 @@ Before executing, record:
 Do not automatically install candidate dependencies. A justified installation is an
 environment intervention from a reviewed source, logged as `RUNTIME_INTERVENTION`;
 it cannot be represented as a pure as-shipped pass. Do not fix source/config/data.
-
-Developer fixtures in this repository are tiny authored test programs. Its
-fixture-only harness may execute exact hash-allowlisted, reviewed fixtures locally
-with sanitized environment and runtime copies. This is not an arbitrary-submission
-executor or an OS security sandbox. Unknown bytes are refused rather than extending
-that development exception to untrusted inputs.

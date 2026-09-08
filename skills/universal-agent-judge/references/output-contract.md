@@ -35,3 +35,6 @@ Post-reference records keep the original requirements, link its immutable hash/p
 and put amendments in `post_reference_audit`. Agreement uses locked decisions.
 Use `validate ... --predecessor pre-reference.json` to verify the actual predecessor
 hash and frozen fields; a structurally valid hash string alone is not proof of a lock.
+
+Install the optional helper dependency from the skill folder with
+`python -m pip install -r requirements.txt`; see [requirements.txt](../requirements.txt).

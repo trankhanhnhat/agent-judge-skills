@@ -10,3 +10,8 @@ node_modules/
 Thumbs.db
 .runtime/
 .eval-work/
+
+# Local development material; excluded from the installable distribution.
+/tests/
+/docs/
+/requirements-dev.txt

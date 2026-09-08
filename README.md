@@ -25,7 +25,7 @@ npx skills add . --skill universal-agent-judge
 The [Skills CLI](https://github.com/vercel-labs/skills) also accepts GitHub repository
 URLs with the same `--skill universal-agent-judge` option. Node.js/npm is needed for
 the installer. The skill includes Markdown guides, a JSON Schema and an optional
-Python record helper requiring `jsonschema`; notebook dependencies are for dev tests.
+Python record helper requiring Python 3.10+ and `jsonschema`.
 
 ## Use
 
@@ -71,39 +71,25 @@ skills/universal-agent-judge/
   references/                  Six mode guides and conditional procedures
   schemas/judgment.schema.json  Canonical audit record
   scripts/judgment.py           Validation, rendering and input-access helper
-tests/                         Package/invariant tests and 11 notebook fixtures
-docs/                          Architecture, migration and measured dev reports
+  requirements.txt             Optional Python helper dependency
 ```
 
 Read [SKILL.md](skills/universal-agent-judge/SKILL.md) for the workflow and
 [the example audit](skills/universal-agent-judge/references/output-example.md) for
 the output. The agent loads only the guides needed for the current submission.
 
-## Validation
+## Validate and render judgments
+
+The Markdown skill works without Python. To use the optional record helper, install
+its dependency from the repository root:
 
 ```bash
-python -m pip install -r requirements-dev.txt
-python -m pytest -q
-```
-
-See [tests/README.md](tests/README.md) for the full suite and reproducible dev eval.
-Notebook tests run only reviewed hash-allowlisted fixtures on runtime copies. They
-do not provide a security sandbox for arbitrary candidates or measure LLM accuracy.
-
-For machine-readable output, see the [output contract](skills/universal-agent-judge/references/output-contract.md).
-Markdown supports concise, standard and forensic views with complete JSON included.
-Validate a record from the repository root:
-
-```bash
+python -m pip install -r skills/universal-agent-judge/requirements.txt
 python skills/universal-agent-judge/scripts/judgment.py validate audit.json
 python skills/universal-agent-judge/scripts/judgment.py render audit.json --detail concise
 ```
 
-## Design
-
-Read the [v9 architecture and routing map](docs/architecture.md),
-[pre-upgrade audit](docs/pre-upgrade-audit.md), and [source patterns](docs/v9-sources.md).
-Executed validation is recorded in [validation](docs/validation.md) and the
-[four developer audits](docs/evaluations/README.md).
-The [v8 design notes](docs/design-notes.md) remain historical. Reference isolation,
-no candidate repair, and evidence-first judgments remain the core policy.
+See the [output contract](skills/universal-agent-judge/references/output-contract.md)
+for record fields and validation rules. Markdown supports concise, standard and
+forensic views with complete JSON included. The helper validates and renders records;
+the agent performs the evidence-based grading.
