@@ -9,6 +9,12 @@ and final deliverables. Produces `SATISFIED` / `UNSATISFIED` decisions and repor
 
 ## Install
 
+From GitHub:
+
+```bash
+npx skills add Nhatdangdihoc/agent-judge-skills --skill universal-agent-judge
+```
+
 From a local checkout:
 
 ```bash
