@@ -1,48 +1,35 @@
 # NOTEBOOK_ML_MODE
 
-Use when correctness depends on an ML/notebook experiment rather than code syntax alone.
+Identify task, notebook/code snapshot, required data/config, and submitted outputs.
+Trace loader -> preprocessing -> split -> model -> train -> evaluate -> artifacts.
 
-## Minimum identity
-- `task_id`
-- notebook/code snapshot
-- data/config identity when required
-- submitted metrics/plots/checkpoints/report when present
+## Eight separate obligations
 
-## Map the experiment graph
-- data load/preprocessing;
-- split/validation logic;
-- model definition;
-- train/eval calls;
-- metrics;
-- plots/checkpoints/results;
-- report references;
-- seeds/config/environment only when explicit or needed for provenance.
+Apply only obligations the rubric requires; do not impose all eight on code-only work.
 
-## Keep obligations separate
-Do not collapse these into one proof:
-1. implementation exists;
-2. experiment actually ran;
-3. a metric was produced;
-4. the metric follows the required evaluation protocol;
-5. required artifacts/report were submitted.
+| Obligation | Evidence |
+|---|---|
+| Implementation exists | Reachable source with required semantics |
+| Cell ran | Submitted output/run record attributable to that cell |
+| Clean Run All succeeds | Fresh kernel, unchanged runtime-copy source, document order |
+| Output saved | Output entries/files in submitted snapshot |
+| Output matches current code | Source/data/config traceability and clean-run comparison |
+| Metric produced | Observed value tied to a concrete run |
+| Metric protocol correct | Actual eval data/split/transforms and metric definition |
+| Artifact submitted | Direct inspection via [artifact mode](mode-artifact.md) |
 
-## ML-specific checks
-Apply only when relevant to the locked rubric:
-- dataset identity: use [dataset provenance](dataset-provenance.md);
-- train/validation/test separation and leakage;
-- split method/seed;
-- preprocessing fit only on permitted training data;
-- requested model/loss/optimizer/config;
-- reachable training loop;
-- correct metric/CV folds;
-- submitted metric/plot/checkpoint/report;
-- synthetic/placeholder shortcuts.
+For execution/order/freshness use [notebook execution](notebook-execution.md).
+For named data use [dataset provenance](dataset-provenance.md). For points use
+[rubric scoring](rubric-scoring.md); notebook warning counts are not scores.
 
-Notebook output cells are not automatically current evidence. If outputs cannot be mapped
-to the current code/data, record `STALE_NOTEBOOK_OUTPUT` and lower their evidence value.
+## ML checks and falsification
 
-## Falsification before SATISFIED
-- Is the reported metric traceable to the current code/data/config?
-- Does an explicit held-out/CV clause suffer leakage?
-- Is a named dataset proven by identity rather than filename?
-- If a saved artifact is required, was the submitted artifact itself inspected via [mode artifact](mode-artifact.md)?
+- Trace version, subset, actual train/eval rows, split method and seed as required.
+- Detect forbidden leakage: preprocessing fit on full/test data, overlap, or wrong
+  validation protocol. A correct metric formula cannot rescue contaminated inputs.
+- Verify requested model/config, search/CV, loss/optimizer and reachable fit calls.
+- Inspect actual metric/plot/checkpoint outputs; captions and model names are claims.
+- Check synthetic substitution, placeholders, contradictory claims and stale metrics.
+- Keep EDA/Pipeline decisions independent of a downstream wrong model.
+- Ask whether clean execution needs deleted state, current outputs match source,
+  and judge-created files are being mistaken for submitted artifacts.

@@ -1,0 +1,75 @@
+{
+  "run_id": "clean-1",
+  "level": "E1",
+  "status": "PASS",
+  "invocation": "reviewed fixture fresh-kernel worker",
+  "working_directory": "runtime-copy/",
+  "isolation": "Hash-allowlisted authored fixture; runtime copy, sanitized environment; no OS sandbox",
+  "network_access": "No candidate network operations; localhost kernel transport; OS egress not enforced",
+  "resource_limits": "20 seconds/cell, 90 seconds/notebook, one numerical thread; no OS memory/disk cap",
+  "cell_timeout_seconds": 20,
+  "total_timeout_seconds": 90,
+  "failed_cell": null,
+  "failure_stage": null,
+  "stdout": "imports ready\ndataset rows 6\nEDA {'rows': 6, 'x_min': 0.0, 'x_max': 5.0}\nMODEL LinearRegression\nRMSE 0.0\nPLOT residual.svg\nPLOT residual2.svg\n",
+  "stderr": "C:\\Users\\admin\\Desktop\\skill_for_chamdiem\\agent-judge-skills\\.venv\\Lib\\site-packages\\zmq\\_future.py:718: RuntimeWarning: Proactor event loop does not implement add_reader family of methods required for zmq. Registering an additional selector thread for add_reader support via tornado. Use `asyncio.set_event_loop_policy(WindowsSelectorEventLoopPolicy())` to avoid this warning.\n  self._get_loop()\n[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.\n",
+  "interventions": [],
+  "subprocesses": [
+    "Python worker",
+    "fresh ipykernel"
+  ],
+  "filesystem_writes": [
+    "executed.ipynb",
+    "residual.svg",
+    "residual2.svg",
+    "runtime.json"
+  ],
+  "source_unchanged": true,
+  "file_hashes": {
+    "source_before": {
+      "notebook.ipynb": "abe54bdad92555717fe75de073ca13f68611d1d926e468b7dc1abdc1d4206832",
+      "tiny.csv": "6f3db621a1805e9c2664dd1b55f394a02e5234968b40f1391b62848e2475c175"
+    },
+    "source_after": {
+      "notebook.ipynb": "abe54bdad92555717fe75de073ca13f68611d1d926e468b7dc1abdc1d4206832",
+      "tiny.csv": "6f3db621a1805e9c2664dd1b55f394a02e5234968b40f1391b62848e2475c175"
+    },
+    "runtime_after": {
+      "executed.ipynb": "cf3f5bcdcbc3bc906e4df9d471797cb2420ff1191faa395bba608a69d3a64c74",
+      "notebook.ipynb": "abe54bdad92555717fe75de073ca13f68611d1d926e468b7dc1abdc1d4206832",
+      "residual.svg": "f8fb1221535dc47c480e77b61997838f2eb21dd9292009431d394948020273bc",
+      "residual2.svg": "135a52671f635ea57882f44bc70c202aedc568987232bf40a0ed410aa1975aab",
+      "runtime.json": "8e253f10a7090938c560a72334116653cf529b93f6e6000b607ed94647fec29d",
+      "tiny.csv": "6f3db621a1805e9c2664dd1b55f394a02e5234968b40f1391b62848e2475c175"
+    }
+  },
+  "file_delta": [
+    {
+      "path": "executed.ipynb",
+      "provenance": "JUDGE_RUNTIME",
+      "sha256_before": null,
+      "sha256_after": "cf3f5bcdcbc3bc906e4df9d471797cb2420ff1191faa395bba608a69d3a64c74"
+    },
+    {
+      "path": "residual.svg",
+      "provenance": "JUDGE_RUNTIME",
+      "sha256_before": null,
+      "sha256_after": "f8fb1221535dc47c480e77b61997838f2eb21dd9292009431d394948020273bc"
+    },
+    {
+      "path": "residual2.svg",
+      "provenance": "JUDGE_RUNTIME",
+      "sha256_before": null,
+      "sha256_after": "135a52671f635ea57882f44bc70c202aedc568987232bf40a0ed410aa1975aab"
+    },
+    {
+      "path": "runtime.json",
+      "provenance": "JUDGE_RUNTIME",
+      "sha256_before": null,
+      "sha256_after": "8e253f10a7090938c560a72334116653cf529b93f6e6000b607ed94647fec29d"
+    }
+  ],
+  "inspection_limitations": [
+    "Reviewed fixture execution only; not safe for arbitrary untrusted submissions."
+  ]
+}

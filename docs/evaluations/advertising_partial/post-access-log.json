@@ -1,0 +1,38 @@
+[
+  {
+    "path": "task.md",
+    "role": "TASK_SOURCE",
+    "state": "INPUT_CLASSIFICATION",
+    "action": "READ"
+  },
+  {
+    "path": "rubric.json",
+    "role": "RUBRIC",
+    "state": "INPUT_CLASSIFICATION",
+    "action": "READ"
+  },
+  {
+    "path": "candidate/notebook.ipynb",
+    "role": "CANDIDATE",
+    "state": "PRE_REFERENCE_EVIDENCE",
+    "action": "READ"
+  },
+  {
+    "path": "candidate/tiny.csv",
+    "role": "CANDIDATE",
+    "state": "PRE_REFERENCE_EVIDENCE",
+    "action": "READ"
+  },
+  {
+    "path": "expected.judgment.json",
+    "role": "GOLD_LABEL",
+    "state": "OPTIONAL_REFERENCE_ACCESS",
+    "action": "READ"
+  },
+  {
+    "path": "expected-flags.json",
+    "role": "GOLD_LABEL",
+    "state": "OPTIONAL_REFERENCE_ACCESS",
+    "action": "READ"
+  }
+]

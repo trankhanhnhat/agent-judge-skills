@@ -1,0 +1,1108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Nhatdangdihoc/agent-judge-skills/judgment.schema.json",
+  "title": "Universal Agent Judge audit",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "submission_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mode": {
+      "enum": [
+        "WORKSPACE_MODE",
+        "FUNCTION_MODE",
+        "PATCH_MODE",
+        "TRAJECTORY_MODE",
+        "NOTEBOOK_ML_MODE",
+        "ARTIFACT_MODE",
+        "COMPOSITE_MODE"
+      ]
+    },
+    "snapshot": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "identifier",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "phase": {
+      "enum": [
+        "PRE_REFERENCE",
+        "POST_REFERENCE"
+      ]
+    },
+    "reference_accessed_before_lock": {
+      "type": "boolean"
+    },
+    "overall_status": {
+      "enum": [
+        "SOLVED",
+        "NOT_SOLVED",
+        "NOT_EVALUABLE"
+      ]
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/input"
+      }
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/requirement"
+      }
+    },
+    "scoring": {
+      "$ref": "#/$defs/scoring"
+    },
+    "penalties": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/penalty"
+      }
+    },
+    "preference_scores": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/preference"
+      }
+    },
+    "runtime_runs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/runtime"
+      }
+    },
+    "flags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "inspection_limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "loaded_references": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "access_log": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/access"
+      }
+    },
+    "lock": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/lock"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "post_reference_audit": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/amendment"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "task_id",
+    "submission_id",
+    "mode",
+    "snapshot",
+    "phase",
+    "reference_accessed_before_lock",
+    "overall_status",
+    "inputs",
+    "requirements",
+    "scoring",
+    "penalties",
+    "preference_scores",
+    "runtime_runs",
+    "flags",
+    "inspection_limitations",
+    "loaded_references",
+    "access_log",
+    "lock",
+    "post_reference_audit"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "absence": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "result": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "scope",
+        "checks",
+        "result"
+      ],
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "evidence_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "location": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_class": {
+          "enum": [
+            "DIRECT",
+            "SUPPORTING",
+            "CONTRADICTORY",
+            "CLAIM_ONLY"
+          ]
+        },
+        "provenance": {
+          "enum": [
+            "SUBMITTED",
+            "JUDGE_RUNTIME",
+            "MODIFIED_BY_RUNTIME",
+            "EXTERNAL_ENVIRONMENT"
+          ]
+        },
+        "dataset_strength": {
+          "enum": [
+            "IDENTITY_DIRECT",
+            "IDENTITY_CORROBORATING",
+            "CLAIM_ONLY",
+            null
+          ]
+        }
+      },
+      "required": [
+        "evidence_id",
+        "location",
+        "description",
+        "evidence_class",
+        "provenance",
+        "dataset_strength"
+      ],
+      "additionalProperties": false
+    },
+    "clause": {
+      "type": "object",
+      "properties": {
+        "clause_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exact_text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "evaluability": {
+          "enum": [
+            "EVALUABLE",
+            "NOT_EVALUABLE"
+          ]
+        },
+        "semantic_decision": {
+          "enum": [
+            "SATISFIED",
+            "UNSATISFIED",
+            null
+          ]
+        },
+        "earned_points": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "max_points": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "score_reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "failure_kind": {
+          "enum": [
+            "CONTRADICTION",
+            "ABSENCE",
+            null
+          ]
+        },
+        "absence_proof": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/absence"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_obligation": {
+          "enum": [
+            "GENERIC",
+            "IMPLEMENTATION",
+            "SUBMITTED_OUTPUT",
+            "CLEAN_EXECUTION"
+          ]
+        }
+      },
+      "required": [
+        "clause_id",
+        "exact_text",
+        "mandatory",
+        "evaluability",
+        "semantic_decision",
+        "earned_points",
+        "max_points",
+        "score_reason",
+        "evidence_ids",
+        "failure_kind",
+        "absence_proof",
+        "evidence_obligation"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "evaluability": {
+                "const": "NOT_EVALUABLE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "semantic_decision": {
+                "type": "null"
+              },
+              "earned_points": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "evaluability": {
+                "const": "EVALUABLE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "semantic_decision": {
+                "enum": [
+                  "SATISFIED",
+                  "UNSATISFIED"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "failure_kind": {
+                "const": "ABSENCE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "absence_proof": {
+                "$ref": "#/$defs/absence"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "requirement": {
+      "type": "object",
+      "properties": {
+        "requirement_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parent_rubric_item": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exact_text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "prerequisites": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "clauses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/clause"
+          },
+          "minItems": 1
+        },
+        "evaluability": {
+          "enum": [
+            "EVALUABLE",
+            "NOT_EVALUABLE"
+          ]
+        },
+        "semantic_decision": {
+          "enum": [
+            "SATISFIED",
+            "UNSATISFIED",
+            null
+          ]
+        },
+        "earned_points": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "max_points": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "confidence": {
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW"
+          ]
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "failed_clauses": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "absence_proof_summary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dependency_aware_status": {
+          "enum": [
+            "SATISFIED",
+            "UNSATISFIED",
+            "BLOCKED",
+            null
+          ]
+        },
+        "inspection_limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "requirement_id",
+        "parent_rubric_item",
+        "exact_text",
+        "mandatory",
+        "prerequisites",
+        "clauses",
+        "evaluability",
+        "semantic_decision",
+        "earned_points",
+        "max_points",
+        "evidence",
+        "confidence",
+        "flags",
+        "failed_clauses",
+        "absence_proof_summary",
+        "dependency_aware_status",
+        "inspection_limitations"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "evaluability": {
+                "const": "NOT_EVALUABLE"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "semantic_decision": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "level": {
+          "enum": [
+            "E0",
+            "E1",
+            "E2",
+            "E3",
+            "O1"
+          ]
+        },
+        "status": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NOT_RUN",
+            "INCONCLUSIVE"
+          ]
+        },
+        "invocation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "working_directory": {
+          "type": "string",
+          "minLength": 1
+        },
+        "isolation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "network_access": {
+          "type": "string",
+          "minLength": 1
+        },
+        "resource_limits": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cell_timeout_seconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "total_timeout_seconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "failed_cell": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "failure_stage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "stdout": {
+          "type": "string"
+        },
+        "stderr": {
+          "type": "string"
+        },
+        "interventions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "subprocesses": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "filesystem_writes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "source_unchanged": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "inspection_limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "file_hashes": {
+          "type": "object",
+          "properties": {
+            "source_before": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            },
+            "source_after": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            },
+            "runtime_after": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            }
+          },
+          "required": [
+            "source_before",
+            "source_after",
+            "runtime_after"
+          ],
+          "additionalProperties": false
+        },
+        "file_delta": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "provenance": {
+                "enum": [
+                  "JUDGE_RUNTIME",
+                  "MODIFIED_BY_RUNTIME"
+                ]
+              },
+              "sha256_before": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "sha256_after": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            },
+            "required": [
+              "path",
+              "provenance",
+              "sha256_before",
+              "sha256_after"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "run_id",
+        "level",
+        "status",
+        "invocation",
+        "working_directory",
+        "isolation",
+        "network_access",
+        "resource_limits",
+        "cell_timeout_seconds",
+        "total_timeout_seconds",
+        "failed_cell",
+        "failure_stage",
+        "stdout",
+        "stderr",
+        "interventions",
+        "subprocesses",
+        "filesystem_writes",
+        "source_unchanged",
+        "inspection_limitations",
+        "file_hashes",
+        "file_delta"
+      ],
+      "additionalProperties": false
+    },
+    "penalty": {
+      "type": "object",
+      "properties": {
+        "penalty_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rule_source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "points": {
+          "type": "number",
+          "minimum": 0
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "penalty_id",
+        "rule_source",
+        "points",
+        "evidence_ids"
+      ],
+      "additionalProperties": false
+    },
+    "preference": {
+      "type": "object",
+      "properties": {
+        "criterion_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rule_source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "max_value": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "content_clause_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "criterion_id",
+        "rule_source",
+        "value",
+        "max_value",
+        "evidence_ids",
+        "content_clause_id"
+      ],
+      "additionalProperties": false
+    },
+    "scoring": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "enum": [
+            "BINARY_ONLY",
+            "WEIGHTED"
+          ]
+        },
+        "allocation_source": {
+          "enum": [
+            "NONE",
+            "RUBRIC",
+            "JUDGE_DERIVED_ALLOCATION"
+          ]
+        },
+        "policy_source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rounding": {
+          "type": "object",
+          "properties": {
+            "decimal_places": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 12
+            },
+            "mode": {
+              "const": "ROUND_HALF_UP"
+            }
+          },
+          "required": [
+            "decimal_places",
+            "mode"
+          ],
+          "additionalProperties": false
+        },
+        "content_cap": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "penalty_cap": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "not_evaluable_policy": {
+          "enum": [
+            "PRESERVE_NULL",
+            "BENCHMARK_ZERO"
+          ]
+        },
+        "coercion_source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "earned_points": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "max_points": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "known_earned_points": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "unresolved_max_points": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "final_points": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      },
+      "required": [
+        "mode",
+        "allocation_source",
+        "policy_source",
+        "rounding",
+        "content_cap",
+        "penalty_cap",
+        "not_evaluable_policy",
+        "coercion_source",
+        "earned_points",
+        "max_points",
+        "known_earned_points",
+        "unresolved_max_points",
+        "final_points"
+      ],
+      "additionalProperties": false
+    },
+    "input": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "enum": [
+            "TASK_SOURCE",
+            "RUBRIC",
+            "CANDIDATE",
+            "REFERENCE_SOLUTION",
+            "GOLD_LABEL",
+            "ORACLE_TEST",
+            "CONTEXT_ONLY",
+            null
+          ]
+        },
+        "classification_source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "access_phase": {
+          "enum": [
+            "UNOPENED",
+            "PRE_REFERENCE",
+            "POST_REFERENCE"
+          ]
+        }
+      },
+      "required": [
+        "path",
+        "role",
+        "classification_source",
+        "access_phase"
+      ],
+      "additionalProperties": false
+    },
+    "access": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "enum": [
+            "TASK_SOURCE",
+            "RUBRIC",
+            "CANDIDATE",
+            "REFERENCE_SOLUTION",
+            "GOLD_LABEL",
+            "ORACLE_TEST",
+            "CONTEXT_ONLY",
+            null
+          ]
+        },
+        "state": {
+          "enum": [
+            "INPUT_CLASSIFICATION",
+            "REQUIREMENT_LOCK",
+            "PRE_REFERENCE_EVIDENCE",
+            "PRE_REFERENCE_DECISION",
+            "IMMUTABLE_LOCK",
+            "OPTIONAL_REFERENCE_ACCESS",
+            "POST_REFERENCE_AUDIT"
+          ]
+        },
+        "action": {
+          "enum": [
+            "READ",
+            "DENIED"
+          ]
+        }
+      },
+      "required": [
+        "path",
+        "role",
+        "state",
+        "action"
+      ],
+      "additionalProperties": false
+    },
+    "lock": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "amendment": {
+      "type": "object",
+      "properties": {
+        "requirement_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reference_value": {
+          "type": "string",
+          "minLength": 1
+        },
+        "match": {
+          "type": "boolean"
+        },
+        "amended_decision": {
+          "enum": [
+            "SATISFIED",
+            "UNSATISFIED",
+            null
+          ]
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locked_clause_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "requirement_id",
+        "reference_value",
+        "match",
+        "amended_decision",
+        "explanation",
+        "locked_clause_ids"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

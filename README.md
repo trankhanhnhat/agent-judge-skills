@@ -4,8 +4,9 @@ An agent skill for grading submitted work against explicit requirements, with
 clause-level evidence and a blind boundary before reference answers.
 
 Supports repositories, functions/classes, patches, tool-use traces, ML notebooks,
-and final deliverables. Produces `SATISFIED` / `UNSATISFIED` decisions and reports
-`NOT_EVALUABLE` separately when the evidence cannot support a fair judgment.
+and final deliverables. Produces `SATISFIED` / `UNSATISFIED`, keeps `NOT_EVALUABLE`
+separate, and adds weighted content points only when supplied by the rubric.
+Administrative penalties and preference ratings remain separate from semantics.
 
 ## Install
 
@@ -23,7 +24,8 @@ npx skills add . --skill universal-agent-judge
 
 The [Skills CLI](https://github.com/vercel-labs/skills) also accepts GitHub repository
 URLs with the same `--skill universal-agent-judge` option. Node.js/npm is needed for
-the installer; the skill itself consists of Markdown instructions.
+the installer. The skill includes Markdown guides, a JSON Schema and an optional
+Python record helper requiring `jsonschema`; notebook dependencies are for dev tests.
 
 ## Use
 
@@ -67,8 +69,10 @@ exception type cannot silently become part of the rubric.
 skills/universal-agent-judge/
   SKILL.md                     Entry point and shared judging rules
   references/                  Six mode guides and conditional procedures
-tests/                         Package checks and manual regression cases
-docs/                          Design sources and migration notes
+  schemas/judgment.schema.json  Canonical audit record
+  scripts/judgment.py           Validation, rendering and input-access helper
+tests/                         Package/invariant tests and 11 notebook fixtures
+docs/                          Architecture, migration and measured dev reports
 ```
 
 Read [SKILL.md](skills/universal-agent-judge/SKILL.md) for the workflow and
@@ -82,14 +86,24 @@ python -m pip install -r requirements-dev.txt
 python -m pytest -q
 ```
 
-Package tests validate metadata and resource links. Manual judgment cases live in
-[tests/regression-cases.md](tests/regression-cases.md); they are not automated LLM
-evaluations. This repository provides instructions, not a grading server or an
-executable benchmark runner. It makes no measured accuracy claim.
+See [tests/README.md](tests/README.md) for the full suite and reproducible dev eval.
+Notebook tests run only reviewed hash-allowlisted fixtures on runtime copies. They
+do not provide a security sandbox for arbitrary candidates or measure LLM accuracy.
+
+For machine-readable output, see the [output contract](skills/universal-agent-judge/references/output-contract.md).
+Markdown supports concise, standard and forensic views with complete JSON included.
+Validate a record from the repository root:
+
+```bash
+python skills/universal-agent-judge/scripts/judgment.py validate audit.json
+python skills/universal-agent-judge/scripts/judgment.py render audit.json --detail concise
+```
 
 ## Design
 
-The v8 rewrite follows the concise entry points and conditional detail seen in
-popular skills from Vercel and Anthropic. The judging policy comes from the supplied
-Universal Agent Judge v7. See [design notes](docs/design-notes.md) for source links,
-the packaging changes, and validation limits.
+Read the [v9 architecture and routing map](docs/architecture.md),
+[pre-upgrade audit](docs/pre-upgrade-audit.md), and [source patterns](docs/v9-sources.md).
+Executed validation is recorded in [validation](docs/validation.md) and the
+[four developer audits](docs/evaluations/README.md).
+The [v8 design notes](docs/design-notes.md) remain historical. Reference isolation,
+no candidate repair, and evidence-first judgments remain the core policy.

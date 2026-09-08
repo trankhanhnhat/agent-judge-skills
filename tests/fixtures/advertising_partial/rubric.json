@@ -1,0 +1,101 @@
+{
+  "task_id": "advertising_partial",
+  "dataset": {
+    "name": "JudgeTiny",
+    "version": "1",
+    "sha256": "6f3db621a1805e9c2664dd1b55f394a02e5234968b40f1391b62848e2475c175"
+  },
+  "requirements": [
+    {
+      "id": "eda",
+      "text": "Submit EDA summary output.",
+      "points": 2,
+      "clauses": [
+        {
+          "id": "eda.1",
+          "text": "Submit EDA summary output.",
+          "points": 2,
+          "check": "eda"
+        }
+      ]
+    },
+    {
+      "id": "pipeline",
+      "text": "Implement sklearn Pipeline.",
+      "points": 2,
+      "clauses": [
+        {
+          "id": "pipeline.1",
+          "text": "Implement sklearn Pipeline.",
+          "points": 2,
+          "check": "pipeline"
+        }
+      ]
+    },
+    {
+      "id": "search",
+      "text": "Use GridSearchCV for Lasso.",
+      "points": 2,
+      "clauses": [
+        {
+          "id": "search.1",
+          "text": "Use GridSearchCV for Lasso.",
+          "points": 2,
+          "check": "search"
+        }
+      ]
+    },
+    {
+      "id": "polynomial",
+      "text": "PolynomialFeatures degree=2, include_bias=False, Ridge(alpha=1.0).",
+      "points": 2,
+      "clauses": [
+        {
+          "id": "degree.1",
+          "text": "Use PolynomialFeatures degree=2.",
+          "points": 0.5,
+          "check": "degree"
+        },
+        {
+          "id": "bias.1",
+          "text": "Use include_bias=False.",
+          "points": 0.5,
+          "check": "bias"
+        },
+        {
+          "id": "model.1",
+          "text": "Use Ridge(alpha=1.0).",
+          "points": 1,
+          "check": "model"
+        }
+      ]
+    },
+    {
+      "id": "submitted_run",
+      "text": "Submit completed outputs for Run All, including final two cells.",
+      "points": 1,
+      "clauses": [
+        {
+          "id": "submitted_run.1",
+          "text": "Submit completed outputs for Run All, including final two cells.",
+          "points": 1,
+          "check": "submitted_run"
+        }
+      ]
+    },
+    {
+      "id": "artifact",
+      "text": "Submit both residual.svg and residual2.svg residual plots.",
+      "points": 1,
+      "clauses": [
+        {
+          "id": "artifact.1",
+          "text": "Submit both residual.svg and residual2.svg residual plots.",
+          "points": 1,
+          "check": "artifact"
+        }
+      ]
+    }
+  ],
+  "scoring_policy": "Explicit clause weights; binary clause credit; parent partial credit by clause sum; no penalties; round final HALF_UP to two decimals."
+}

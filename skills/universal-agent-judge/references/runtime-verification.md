@@ -3,11 +3,15 @@
 Choose the execution check that resolves the uncertain clause, then classify any
 oracle failure. Track file origins using [provenance](provenance.md).
 
+Before every level that executes code (including imports), apply
+[safe execution](safe-candidate-execution.md). Work in an isolated runtime copy.
+For notebook clean runs use [notebook execution](notebook-execution.md).
+
 ## E0 — Non-invasive preflight
 Syntax/import/discovery checks. Useful for viability; not end-to-end proof.
 
 ## E1 — As-shipped end-to-end
-Run the documented/default entrypoint without patching candidate source/config.
+Run the documented/default entrypoint in the runtime copy without patching source/config.
 Record cwd, command, environment, exit code, decisive stdout/stderr, failure stage, and
 artifact delta. E1 is the strongest evidence for explicit end-to-end behavior.
 

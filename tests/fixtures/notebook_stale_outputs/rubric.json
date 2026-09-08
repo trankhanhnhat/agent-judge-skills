@@ -1,0 +1,141 @@
+{
+  "task_id": "notebook_stale_outputs",
+  "dataset": {
+    "name": "JudgeTiny",
+    "version": "1",
+    "sha256": "6f3db621a1805e9c2664dd1b55f394a02e5234968b40f1391b62848e2475c175"
+  },
+  "requirements": [
+    {
+      "id": "implementation",
+      "text": "Implement a reachable fit and predict workflow.",
+      "points": 1,
+      "clauses": [
+        {
+          "id": "implementation.1",
+          "text": "Implement a reachable fit and predict workflow.",
+          "points": 1,
+          "check": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "submitted_run",
+      "text": "Submit completed output for every nonempty code cell as Run All evidence.",
+      "points": 1,
+      "clauses": [
+        {
+          "id": "submitted_run.1",
+          "text": "Submit completed output for every nonempty code cell as Run All evidence.",
+          "points": 1,
+          "check": "submitted_run"
+        }
+      ]
+    },
+    {
+      "id": "clean_run",
+      "text": "Notebook must run from a fresh kernel in document order.",
+      "points": 1,
+      "clauses": [
+        {
+          "id": "clean_run.1",
+          "text": "Notebook must run from a fresh kernel in document order.",
+          "points": 1,
+          "check": "clean_run"
+        }
+      ]
+    },
+    {
+      "id": "saved_outputs",
+      "text": "Save all nonempty code-cell outputs in the submitted notebook.",
+      "points": 1,
+      "clauses": [
+        {
+          "id": "saved_outputs.1",
+          "text": "Save all nonempty code-cell outputs in the submitted notebook.",
+          "points": 1,
+          "check": "saved_outputs"
+        }
+      ]
+    },
+    {
+      "id": "fresh_outputs",
+      "text": "Saved semantic outputs must match current code and supplied data.",
+      "points": 1,
+      "clauses": [
+        {
+          "id": "fresh_outputs.1",
+          "text": "Saved semantic outputs must match current code and supplied data.",
+          "points": 1,
+          "check": "fresh_outputs"
+        }
+      ]
+    },
+    {
+      "id": "metric",
+      "text": "Submit the RMSE produced by the evaluation cell.",
+      "points": 1,
+      "clauses": [
+        {
+          "id": "metric.1",
+          "text": "Submit the RMSE produced by the evaluation cell.",
+          "points": 1,
+          "check": "metric"
+        }
+      ]
+    },
+    {
+      "id": "protocol",
+      "text": "Fit preprocessing only on first four training rows; evaluate untouched last two rows.",
+      "points": 1,
+      "clauses": [
+        {
+          "id": "protocol.1",
+          "text": "Fit preprocessing only on first four training rows; evaluate untouched last two rows.",
+          "points": 1,
+          "check": "protocol"
+        }
+      ]
+    },
+    {
+      "id": "artifact",
+      "text": "Submit residual.svg containing the residual scatter plot.",
+      "points": 1,
+      "clauses": [
+        {
+          "id": "artifact.1",
+          "text": "Submit residual.svg containing the residual scatter plot.",
+          "points": 1,
+          "check": "artifact"
+        }
+      ]
+    },
+    {
+      "id": "dataset",
+      "text": "Train/evaluate using the supplied JudgeTiny v1 CSV bytes identified by trusted SHA-256.",
+      "points": 1,
+      "clauses": [
+        {
+          "id": "dataset.1",
+          "text": "Train/evaluate using the supplied JudgeTiny v1 CSV bytes identified by trusted SHA-256.",
+          "points": 1,
+          "check": "dataset"
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "text": "Use sklearn Ridge(alpha=1.0) in the model Pipeline.",
+      "points": 1,
+      "clauses": [
+        {
+          "id": "model.1",
+          "text": "Use sklearn Ridge(alpha=1.0) in the model Pipeline.",
+          "points": 1,
+          "check": "model"
+        }
+      ]
+    }
+  ],
+  "scoring_policy": "Explicit clause weights; binary clause credit; parent partial credit by clause sum; no penalties; round final HALF_UP to two decimals."
+}

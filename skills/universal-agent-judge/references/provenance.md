@@ -12,6 +12,11 @@ created/modified.
 Before runtime, snapshot/hash relevant files when practical. After runtime, diff the
 relevant paths and tag provenance.
 
+Before candidate execution, hash original inputs and copy only allowed files into
+the isolated run root. Hash the originals again afterward. A changed file in the
+runtime copy is `MODIFIED_BY_RUNTIME`; the original must remain unchanged. Runtime
+records include before/after hashes, paths, writes, and containment limitations.
+
 A `JUDGE_RUNTIME` artifact may prove reproducibility or capability, but never proves the
 file was originally submitted.
 

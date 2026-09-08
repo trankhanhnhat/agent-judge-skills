@@ -22,6 +22,10 @@ Track only decisive steps:
 `DIRECT_OBSERVATION`, `SUPPORTING_OBSERVATION`, `CONTRADICTORY_OBSERVATION`,
 `UNSUPPORTED_CLAIM`, `TOOL_ERROR`, `IRRELEVANT_STEP`.
 
+These are trace annotations, not extra schema evidence classes. Map observations
+to `DIRECT`, `SUPPORTING`, `CONTRADICTORY`, or `CLAIM_ONLY`; put tool errors and
+irrelevance in the evidence description/runtime result.
+
 ## Judge four separate axes when the rubric covers them
 1. `ANSWER_SUPPORT`
 2. `EVIDENCE_SUFFICIENCY`

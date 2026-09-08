@@ -1,0 +1,400 @@
+{
+  "schema_version": "1.0",
+  "task_id": "advertising_partial",
+  "submission_id": "candidate-1",
+  "mode": "NOTEBOOK_ML_MODE",
+  "snapshot": {
+    "identifier": "fixture-v1",
+    "sha256": "abe54bdad92555717fe75de073ca13f68611d1d926e468b7dc1abdc1d4206832"
+  },
+  "phase": "PRE_REFERENCE",
+  "reference_accessed_before_lock": false,
+  "overall_status": "NOT_SOLVED",
+  "inputs": [],
+  "requirements": [
+    {
+      "requirement_id": "eda",
+      "parent_rubric_item": "eda",
+      "exact_text": "Submit EDA summary output.",
+      "mandatory": true,
+      "prerequisites": [],
+      "clauses": [
+        {
+          "clause_id": "eda.1",
+          "exact_text": "Submit EDA summary output.",
+          "evidence_obligation": "SUBMITTED_OUTPUT",
+          "mandatory": true,
+          "evaluability": "EVALUABLE",
+          "semantic_decision": "SATISFIED",
+          "earned_points": 2,
+          "max_points": 2,
+          "score_reason": "Expected direct evidence for Submit EDA summary output.",
+          "evidence_ids": [
+            "eda.1-evidence"
+          ],
+          "failure_kind": null,
+          "absence_proof": null
+        }
+      ],
+      "evaluability": "EVALUABLE",
+      "semantic_decision": "SATISFIED",
+      "earned_points": 2.0,
+      "max_points": 2,
+      "evidence": [
+        {
+          "evidence_id": "eda.1-evidence",
+          "location": "candidate/notebook.ipynb",
+          "description": "Expected direct evidence for Submit EDA summary output.",
+          "evidence_class": "DIRECT",
+          "provenance": "SUBMITTED",
+          "dataset_strength": null
+        }
+      ],
+      "confidence": "HIGH",
+      "flags": [],
+      "failed_clauses": [],
+      "absence_proof_summary": null,
+      "dependency_aware_status": "SATISFIED",
+      "inspection_limitations": []
+    },
+    {
+      "requirement_id": "pipeline",
+      "parent_rubric_item": "pipeline",
+      "exact_text": "Implement sklearn Pipeline.",
+      "mandatory": true,
+      "prerequisites": [],
+      "clauses": [
+        {
+          "clause_id": "pipeline.1",
+          "exact_text": "Implement sklearn Pipeline.",
+          "evidence_obligation": "IMPLEMENTATION",
+          "mandatory": true,
+          "evaluability": "EVALUABLE",
+          "semantic_decision": "SATISFIED",
+          "earned_points": 2,
+          "max_points": 2,
+          "score_reason": "Expected direct evidence for Implement sklearn Pipeline.",
+          "evidence_ids": [
+            "pipeline.1-evidence"
+          ],
+          "failure_kind": null,
+          "absence_proof": null
+        }
+      ],
+      "evaluability": "EVALUABLE",
+      "semantic_decision": "SATISFIED",
+      "earned_points": 2.0,
+      "max_points": 2,
+      "evidence": [
+        {
+          "evidence_id": "pipeline.1-evidence",
+          "location": "candidate/notebook.ipynb",
+          "description": "Expected direct evidence for Implement sklearn Pipeline.",
+          "evidence_class": "DIRECT",
+          "provenance": "SUBMITTED",
+          "dataset_strength": null
+        }
+      ],
+      "confidence": "HIGH",
+      "flags": [],
+      "failed_clauses": [],
+      "absence_proof_summary": null,
+      "dependency_aware_status": "SATISFIED",
+      "inspection_limitations": []
+    },
+    {
+      "requirement_id": "search",
+      "parent_rubric_item": "search",
+      "exact_text": "Use GridSearchCV for Lasso.",
+      "mandatory": true,
+      "prerequisites": [],
+      "clauses": [
+        {
+          "clause_id": "search.1",
+          "exact_text": "Use GridSearchCV for Lasso.",
+          "evidence_obligation": "IMPLEMENTATION",
+          "mandatory": true,
+          "evaluability": "EVALUABLE",
+          "semantic_decision": "UNSATISFIED",
+          "earned_points": 0,
+          "max_points": 2,
+          "score_reason": "Expected direct evidence for Use GridSearchCV for Lasso.",
+          "evidence_ids": [
+            "search.1-evidence"
+          ],
+          "failure_kind": "ABSENCE",
+          "absence_proof": {
+            "scope": "candidate snapshot",
+            "checks": [
+              "Inspect exact required cell/output/path",
+              "Inventory submitted candidate files and output arrays; inspect producer references"
+            ],
+            "result": "Expected direct evidence for Use GridSearchCV for Lasso."
+          }
+        }
+      ],
+      "evaluability": "EVALUABLE",
+      "semantic_decision": "UNSATISFIED",
+      "earned_points": 0.0,
+      "max_points": 2,
+      "evidence": [
+        {
+          "evidence_id": "search.1-evidence",
+          "location": "candidate/notebook.ipynb",
+          "description": "Expected direct evidence for Use GridSearchCV for Lasso.",
+          "evidence_class": "CONTRADICTORY",
+          "provenance": "SUBMITTED",
+          "dataset_strength": null
+        }
+      ],
+      "confidence": "HIGH",
+      "flags": [],
+      "failed_clauses": [
+        "search.1"
+      ],
+      "absence_proof_summary": "Recorded exact-path/cell and submission-scope search in failed clauses.",
+      "dependency_aware_status": "UNSATISFIED",
+      "inspection_limitations": []
+    },
+    {
+      "requirement_id": "polynomial",
+      "parent_rubric_item": "polynomial",
+      "exact_text": "PolynomialFeatures degree=2, include_bias=False, Ridge(alpha=1.0).",
+      "mandatory": true,
+      "prerequisites": [],
+      "clauses": [
+        {
+          "clause_id": "degree.1",
+          "exact_text": "Use PolynomialFeatures degree=2.",
+          "evidence_obligation": "IMPLEMENTATION",
+          "mandatory": true,
+          "evaluability": "EVALUABLE",
+          "semantic_decision": "SATISFIED",
+          "earned_points": 0.5,
+          "max_points": 0.5,
+          "score_reason": "Expected direct evidence for Use PolynomialFeatures degree=2.",
+          "evidence_ids": [
+            "degree.1-evidence"
+          ],
+          "failure_kind": null,
+          "absence_proof": null
+        },
+        {
+          "clause_id": "bias.1",
+          "exact_text": "Use include_bias=False.",
+          "evidence_obligation": "IMPLEMENTATION",
+          "mandatory": true,
+          "evaluability": "EVALUABLE",
+          "semantic_decision": "SATISFIED",
+          "earned_points": 0.5,
+          "max_points": 0.5,
+          "score_reason": "Expected direct evidence for Use include_bias=False.",
+          "evidence_ids": [
+            "bias.1-evidence"
+          ],
+          "failure_kind": null,
+          "absence_proof": null
+        },
+        {
+          "clause_id": "model.1",
+          "exact_text": "Use Ridge(alpha=1.0).",
+          "evidence_obligation": "IMPLEMENTATION",
+          "mandatory": true,
+          "evaluability": "EVALUABLE",
+          "semantic_decision": "UNSATISFIED",
+          "earned_points": 0,
+          "max_points": 1,
+          "score_reason": "Expected direct evidence for Use Ridge(alpha=1.0).",
+          "evidence_ids": [
+            "model.1-evidence"
+          ],
+          "failure_kind": "CONTRADICTION",
+          "absence_proof": null
+        }
+      ],
+      "evaluability": "EVALUABLE",
+      "semantic_decision": "UNSATISFIED",
+      "earned_points": 1.0,
+      "max_points": 2,
+      "evidence": [
+        {
+          "evidence_id": "degree.1-evidence",
+          "location": "candidate/notebook.ipynb",
+          "description": "Expected direct evidence for Use PolynomialFeatures degree=2.",
+          "evidence_class": "DIRECT",
+          "provenance": "SUBMITTED",
+          "dataset_strength": null
+        },
+        {
+          "evidence_id": "bias.1-evidence",
+          "location": "candidate/notebook.ipynb",
+          "description": "Expected direct evidence for Use include_bias=False.",
+          "evidence_class": "DIRECT",
+          "provenance": "SUBMITTED",
+          "dataset_strength": null
+        },
+        {
+          "evidence_id": "model.1-evidence",
+          "location": "candidate/notebook.ipynb",
+          "description": "Expected direct evidence for Use Ridge(alpha=1.0).",
+          "evidence_class": "CONTRADICTORY",
+          "provenance": "SUBMITTED",
+          "dataset_strength": null
+        }
+      ],
+      "confidence": "HIGH",
+      "flags": [
+        "MODEL_CONFIG_MISMATCH"
+      ],
+      "failed_clauses": [
+        "model.1"
+      ],
+      "absence_proof_summary": null,
+      "dependency_aware_status": "UNSATISFIED",
+      "inspection_limitations": []
+    },
+    {
+      "requirement_id": "submitted_run",
+      "parent_rubric_item": "submitted_run",
+      "exact_text": "Submit completed outputs for Run All, including final two cells.",
+      "mandatory": true,
+      "prerequisites": [],
+      "clauses": [
+        {
+          "clause_id": "submitted_run.1",
+          "exact_text": "Submit completed outputs for Run All, including final two cells.",
+          "evidence_obligation": "SUBMITTED_OUTPUT",
+          "mandatory": true,
+          "evaluability": "EVALUABLE",
+          "semantic_decision": "UNSATISFIED",
+          "earned_points": 0,
+          "max_points": 1,
+          "score_reason": "Expected direct evidence for Submit completed outputs for Run All, including final two cells.",
+          "evidence_ids": [
+            "submitted_run.1-evidence"
+          ],
+          "failure_kind": "ABSENCE",
+          "absence_proof": {
+            "scope": "candidate snapshot",
+            "checks": [
+              "Inspect exact required cell/output/path",
+              "Inventory submitted candidate files and output arrays; inspect producer references"
+            ],
+            "result": "Expected direct evidence for Submit completed outputs for Run All, including final two cells."
+          }
+        }
+      ],
+      "evaluability": "EVALUABLE",
+      "semantic_decision": "UNSATISFIED",
+      "earned_points": 0.0,
+      "max_points": 1,
+      "evidence": [
+        {
+          "evidence_id": "submitted_run.1-evidence",
+          "location": "candidate/notebook.ipynb",
+          "description": "Expected direct evidence for Submit completed outputs for Run All, including final two cells.",
+          "evidence_class": "CONTRADICTORY",
+          "provenance": "SUBMITTED",
+          "dataset_strength": null
+        }
+      ],
+      "confidence": "HIGH",
+      "flags": [
+        "NOTEBOOK_NOT_RUN_ALL"
+      ],
+      "failed_clauses": [
+        "submitted_run.1"
+      ],
+      "absence_proof_summary": "Recorded exact-path/cell and submission-scope search in failed clauses.",
+      "dependency_aware_status": "UNSATISFIED",
+      "inspection_limitations": []
+    },
+    {
+      "requirement_id": "artifact",
+      "parent_rubric_item": "artifact",
+      "exact_text": "Submit both residual.svg and residual2.svg residual plots.",
+      "mandatory": true,
+      "prerequisites": [],
+      "clauses": [
+        {
+          "clause_id": "artifact.1",
+          "exact_text": "Submit both residual.svg and residual2.svg residual plots.",
+          "evidence_obligation": "SUBMITTED_OUTPUT",
+          "mandatory": true,
+          "evaluability": "EVALUABLE",
+          "semantic_decision": "UNSATISFIED",
+          "earned_points": 0,
+          "max_points": 1,
+          "score_reason": "Expected direct evidence for Submit both residual.svg and residual2.svg residual plots.",
+          "evidence_ids": [
+            "artifact.1-evidence"
+          ],
+          "failure_kind": "ABSENCE",
+          "absence_proof": {
+            "scope": "candidate snapshot",
+            "checks": [
+              "Inspect exact required cell/output/path",
+              "Inventory submitted candidate files and output arrays; inspect producer references"
+            ],
+            "result": "Expected direct evidence for Submit both residual.svg and residual2.svg residual plots."
+          }
+        }
+      ],
+      "evaluability": "EVALUABLE",
+      "semantic_decision": "UNSATISFIED",
+      "earned_points": 0.0,
+      "max_points": 1,
+      "evidence": [
+        {
+          "evidence_id": "artifact.1-evidence",
+          "location": "candidate/notebook.ipynb",
+          "description": "Expected direct evidence for Submit both residual.svg and residual2.svg residual plots.",
+          "evidence_class": "CONTRADICTORY",
+          "provenance": "SUBMITTED",
+          "dataset_strength": null
+        }
+      ],
+      "confidence": "HIGH",
+      "flags": [
+        "MISSING_ARTIFACT"
+      ],
+      "failed_clauses": [
+        "artifact.1"
+      ],
+      "absence_proof_summary": "Recorded exact-path/cell and submission-scope search in failed clauses.",
+      "dependency_aware_status": "UNSATISFIED",
+      "inspection_limitations": []
+    }
+  ],
+  "scoring": {
+    "mode": "WEIGHTED",
+    "allocation_source": "RUBRIC",
+    "policy_source": "rubric.json: explicit clause weights",
+    "rounding": {
+      "decimal_places": 2,
+      "mode": "ROUND_HALF_UP"
+    },
+    "content_cap": null,
+    "penalty_cap": null,
+    "not_evaluable_policy": "PRESERVE_NULL",
+    "coercion_source": null,
+    "earned_points": 5.0,
+    "max_points": 10.0,
+    "known_earned_points": 5.0,
+    "unresolved_max_points": 0.0,
+    "final_points": 5.0
+  },
+  "penalties": [],
+  "preference_scores": [],
+  "runtime_runs": [],
+  "flags": [
+    "MODEL_CONFIG_MISMATCH",
+    "NOTEBOOK_NOT_RUN_ALL",
+    "MISSING_ARTIFACT"
+  ],
+  "inspection_limitations": [],
+  "loaded_references": [],
+  "access_log": [],
+  "lock": null,
+  "post_reference_audit": []
+}

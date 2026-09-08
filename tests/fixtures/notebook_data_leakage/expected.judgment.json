@@ -1,0 +1,499 @@
+{
+  "schema_version": "1.0",
+  "task_id": "notebook_data_leakage",
+  "submission_id": "candidate-1",
+  "mode": "NOTEBOOK_ML_MODE",
+  "snapshot": {
+    "identifier": "fixture-v1",
+    "sha256": "a39ceb3694f51e1ea87cbfb27f1a2b23ccd6b47c8a2cd670535b891212d0eeac"
+  },
+  "phase": "PRE_REFERENCE",
+  "reference_accessed_before_lock": false,
+  "overall_status": "NOT_SOLVED",
+  "inputs": [],
+  "requirements": [
+    {
+      "requirement_id": "implementation",
+      "parent_rubric_item": "implementation",
+      "exact_text": "Implement a reachable fit and predict workflow.",
+      "mandatory": true,
+      "prerequisites": [],
+      "clauses": [
+        {
+          "clause_id": "implementation.1",
+          "exact_text": "Implement a reachable fit and predict workflow.",
+          "evidence_obligation": "IMPLEMENTATION",
+          "mandatory": true,
+          "evaluability": "EVALUABLE",
+          "semantic_decision": "SATISFIED",
+          "earned_points": 1,
+          "max_points": 1,
+          "score_reason": "Expected direct evidence for Implement a reachable fit and predict workflow.",
+          "evidence_ids": [
+            "implementation.1-evidence"
+          ],
+          "failure_kind": null,
+          "absence_proof": null
+        }
+      ],
+      "evaluability": "EVALUABLE",
+      "semantic_decision": "SATISFIED",
+      "earned_points": 1.0,
+      "max_points": 1,
+      "evidence": [
+        {
+          "evidence_id": "implementation.1-evidence",
+          "location": "candidate/notebook.ipynb",
+          "description": "Expected direct evidence for Implement a reachable fit and predict workflow.",
+          "evidence_class": "DIRECT",
+          "provenance": "SUBMITTED",
+          "dataset_strength": null
+        }
+      ],
+      "confidence": "HIGH",
+      "flags": [],
+      "failed_clauses": [],
+      "absence_proof_summary": null,
+      "dependency_aware_status": "SATISFIED",
+      "inspection_limitations": []
+    },
+    {
+      "requirement_id": "submitted_run",
+      "parent_rubric_item": "submitted_run",
+      "exact_text": "Submit completed output for every nonempty code cell as Run All evidence.",
+      "mandatory": true,
+      "prerequisites": [],
+      "clauses": [
+        {
+          "clause_id": "submitted_run.1",
+          "exact_text": "Submit completed output for every nonempty code cell as Run All evidence.",
+          "evidence_obligation": "SUBMITTED_OUTPUT",
+          "mandatory": true,
+          "evaluability": "EVALUABLE",
+          "semantic_decision": "SATISFIED",
+          "earned_points": 1,
+          "max_points": 1,
+          "score_reason": "Expected direct evidence for Submit completed output for every nonempty code cell as Run All evidence.",
+          "evidence_ids": [
+            "submitted_run.1-evidence"
+          ],
+          "failure_kind": null,
+          "absence_proof": null
+        }
+      ],
+      "evaluability": "EVALUABLE",
+      "semantic_decision": "SATISFIED",
+      "earned_points": 1.0,
+      "max_points": 1,
+      "evidence": [
+        {
+          "evidence_id": "submitted_run.1-evidence",
+          "location": "candidate/notebook.ipynb",
+          "description": "Expected direct evidence for Submit completed output for every nonempty code cell as Run All evidence.",
+          "evidence_class": "DIRECT",
+          "provenance": "SUBMITTED",
+          "dataset_strength": null
+        }
+      ],
+      "confidence": "HIGH",
+      "flags": [],
+      "failed_clauses": [],
+      "absence_proof_summary": null,
+      "dependency_aware_status": "SATISFIED",
+      "inspection_limitations": []
+    },
+    {
+      "requirement_id": "clean_run",
+      "parent_rubric_item": "clean_run",
+      "exact_text": "Notebook must run from a fresh kernel in document order.",
+      "mandatory": true,
+      "prerequisites": [],
+      "clauses": [
+        {
+          "clause_id": "clean_run.1",
+          "exact_text": "Notebook must run from a fresh kernel in document order.",
+          "evidence_obligation": "CLEAN_EXECUTION",
+          "mandatory": true,
+          "evaluability": "EVALUABLE",
+          "semantic_decision": "SATISFIED",
+          "earned_points": 1,
+          "max_points": 1,
+          "score_reason": "Expected direct evidence for Notebook must run from a fresh kernel in document order.",
+          "evidence_ids": [
+            "clean_run.1-evidence"
+          ],
+          "failure_kind": null,
+          "absence_proof": null
+        }
+      ],
+      "evaluability": "EVALUABLE",
+      "semantic_decision": "SATISFIED",
+      "earned_points": 1.0,
+      "max_points": 1,
+      "evidence": [
+        {
+          "evidence_id": "clean_run.1-evidence",
+          "location": "candidate/notebook.ipynb",
+          "description": "Expected direct evidence for Notebook must run from a fresh kernel in document order.",
+          "evidence_class": "DIRECT",
+          "provenance": "JUDGE_RUNTIME",
+          "dataset_strength": null
+        }
+      ],
+      "confidence": "HIGH",
+      "flags": [],
+      "failed_clauses": [],
+      "absence_proof_summary": null,
+      "dependency_aware_status": "SATISFIED",
+      "inspection_limitations": []
+    },
+    {
+      "requirement_id": "saved_outputs",
+      "parent_rubric_item": "saved_outputs",
+      "exact_text": "Save all nonempty code-cell outputs in the submitted notebook.",
+      "mandatory": true,
+      "prerequisites": [],
+      "clauses": [
+        {
+          "clause_id": "saved_outputs.1",
+          "exact_text": "Save all nonempty code-cell outputs in the submitted notebook.",
+          "evidence_obligation": "SUBMITTED_OUTPUT",
+          "mandatory": true,
+          "evaluability": "EVALUABLE",
+          "semantic_decision": "SATISFIED",
+          "earned_points": 1,
+          "max_points": 1,
+          "score_reason": "Expected direct evidence for Save all nonempty code-cell outputs in the submitted notebook.",
+          "evidence_ids": [
+            "saved_outputs.1-evidence"
+          ],
+          "failure_kind": null,
+          "absence_proof": null
+        }
+      ],
+      "evaluability": "EVALUABLE",
+      "semantic_decision": "SATISFIED",
+      "earned_points": 1.0,
+      "max_points": 1,
+      "evidence": [
+        {
+          "evidence_id": "saved_outputs.1-evidence",
+          "location": "candidate/notebook.ipynb",
+          "description": "Expected direct evidence for Save all nonempty code-cell outputs in the submitted notebook.",
+          "evidence_class": "DIRECT",
+          "provenance": "SUBMITTED",
+          "dataset_strength": null
+        }
+      ],
+      "confidence": "HIGH",
+      "flags": [],
+      "failed_clauses": [],
+      "absence_proof_summary": null,
+      "dependency_aware_status": "SATISFIED",
+      "inspection_limitations": []
+    },
+    {
+      "requirement_id": "fresh_outputs",
+      "parent_rubric_item": "fresh_outputs",
+      "exact_text": "Saved semantic outputs must match current code and supplied data.",
+      "mandatory": true,
+      "prerequisites": [],
+      "clauses": [
+        {
+          "clause_id": "fresh_outputs.1",
+          "exact_text": "Saved semantic outputs must match current code and supplied data.",
+          "evidence_obligation": "GENERIC",
+          "mandatory": true,
+          "evaluability": "EVALUABLE",
+          "semantic_decision": "SATISFIED",
+          "earned_points": 1,
+          "max_points": 1,
+          "score_reason": "Expected direct evidence for Saved semantic outputs must match current code and supplied data.",
+          "evidence_ids": [
+            "fresh_outputs.1-evidence"
+          ],
+          "failure_kind": null,
+          "absence_proof": null
+        }
+      ],
+      "evaluability": "EVALUABLE",
+      "semantic_decision": "SATISFIED",
+      "earned_points": 1.0,
+      "max_points": 1,
+      "evidence": [
+        {
+          "evidence_id": "fresh_outputs.1-evidence",
+          "location": "candidate/notebook.ipynb",
+          "description": "Expected direct evidence for Saved semantic outputs must match current code and supplied data.",
+          "evidence_class": "DIRECT",
+          "provenance": "SUBMITTED",
+          "dataset_strength": null
+        }
+      ],
+      "confidence": "HIGH",
+      "flags": [],
+      "failed_clauses": [],
+      "absence_proof_summary": null,
+      "dependency_aware_status": "SATISFIED",
+      "inspection_limitations": []
+    },
+    {
+      "requirement_id": "metric",
+      "parent_rubric_item": "metric",
+      "exact_text": "Submit the RMSE produced by the evaluation cell.",
+      "mandatory": true,
+      "prerequisites": [],
+      "clauses": [
+        {
+          "clause_id": "metric.1",
+          "exact_text": "Submit the RMSE produced by the evaluation cell.",
+          "evidence_obligation": "SUBMITTED_OUTPUT",
+          "mandatory": true,
+          "evaluability": "EVALUABLE",
+          "semantic_decision": "SATISFIED",
+          "earned_points": 1,
+          "max_points": 1,
+          "score_reason": "Expected direct evidence for Submit the RMSE produced by the evaluation cell.",
+          "evidence_ids": [
+            "metric.1-evidence"
+          ],
+          "failure_kind": null,
+          "absence_proof": null
+        }
+      ],
+      "evaluability": "EVALUABLE",
+      "semantic_decision": "SATISFIED",
+      "earned_points": 1.0,
+      "max_points": 1,
+      "evidence": [
+        {
+          "evidence_id": "metric.1-evidence",
+          "location": "candidate/notebook.ipynb",
+          "description": "Expected direct evidence for Submit the RMSE produced by the evaluation cell.",
+          "evidence_class": "DIRECT",
+          "provenance": "SUBMITTED",
+          "dataset_strength": null
+        }
+      ],
+      "confidence": "HIGH",
+      "flags": [],
+      "failed_clauses": [],
+      "absence_proof_summary": null,
+      "dependency_aware_status": "SATISFIED",
+      "inspection_limitations": []
+    },
+    {
+      "requirement_id": "protocol",
+      "parent_rubric_item": "protocol",
+      "exact_text": "Fit preprocessing only on first four training rows; evaluate untouched last two rows.",
+      "mandatory": true,
+      "prerequisites": [],
+      "clauses": [
+        {
+          "clause_id": "protocol.1",
+          "exact_text": "Fit preprocessing only on first four training rows; evaluate untouched last two rows.",
+          "evidence_obligation": "GENERIC",
+          "mandatory": true,
+          "evaluability": "EVALUABLE",
+          "semantic_decision": "UNSATISFIED",
+          "earned_points": 0,
+          "max_points": 1,
+          "score_reason": "Expected direct evidence for Fit preprocessing only on first four training rows; evaluate untouched last two rows.",
+          "evidence_ids": [
+            "protocol.1-evidence"
+          ],
+          "failure_kind": "CONTRADICTION",
+          "absence_proof": null
+        }
+      ],
+      "evaluability": "EVALUABLE",
+      "semantic_decision": "UNSATISFIED",
+      "earned_points": 0.0,
+      "max_points": 1,
+      "evidence": [
+        {
+          "evidence_id": "protocol.1-evidence",
+          "location": "candidate/notebook.ipynb",
+          "description": "Expected direct evidence for Fit preprocessing only on first four training rows; evaluate untouched last two rows.",
+          "evidence_class": "CONTRADICTORY",
+          "provenance": "SUBMITTED",
+          "dataset_strength": null
+        }
+      ],
+      "confidence": "HIGH",
+      "flags": [
+        "DATA_LEAKAGE_RISK"
+      ],
+      "failed_clauses": [
+        "protocol.1"
+      ],
+      "absence_proof_summary": null,
+      "dependency_aware_status": "UNSATISFIED",
+      "inspection_limitations": []
+    },
+    {
+      "requirement_id": "artifact",
+      "parent_rubric_item": "artifact",
+      "exact_text": "Submit residual.svg containing the residual scatter plot.",
+      "mandatory": true,
+      "prerequisites": [],
+      "clauses": [
+        {
+          "clause_id": "artifact.1",
+          "exact_text": "Submit residual.svg containing the residual scatter plot.",
+          "evidence_obligation": "SUBMITTED_OUTPUT",
+          "mandatory": true,
+          "evaluability": "EVALUABLE",
+          "semantic_decision": "SATISFIED",
+          "earned_points": 1,
+          "max_points": 1,
+          "score_reason": "Expected direct evidence for Submit residual.svg containing the residual scatter plot.",
+          "evidence_ids": [
+            "artifact.1-evidence"
+          ],
+          "failure_kind": null,
+          "absence_proof": null
+        }
+      ],
+      "evaluability": "EVALUABLE",
+      "semantic_decision": "SATISFIED",
+      "earned_points": 1.0,
+      "max_points": 1,
+      "evidence": [
+        {
+          "evidence_id": "artifact.1-evidence",
+          "location": "candidate/notebook.ipynb",
+          "description": "Expected direct evidence for Submit residual.svg containing the residual scatter plot.",
+          "evidence_class": "DIRECT",
+          "provenance": "SUBMITTED",
+          "dataset_strength": null
+        }
+      ],
+      "confidence": "HIGH",
+      "flags": [],
+      "failed_clauses": [],
+      "absence_proof_summary": null,
+      "dependency_aware_status": "SATISFIED",
+      "inspection_limitations": []
+    },
+    {
+      "requirement_id": "dataset",
+      "parent_rubric_item": "dataset",
+      "exact_text": "Train/evaluate using the supplied JudgeTiny v1 CSV bytes identified by trusted SHA-256.",
+      "mandatory": true,
+      "prerequisites": [],
+      "clauses": [
+        {
+          "clause_id": "dataset.1",
+          "exact_text": "Train/evaluate using the supplied JudgeTiny v1 CSV bytes identified by trusted SHA-256.",
+          "evidence_obligation": "GENERIC",
+          "mandatory": true,
+          "evaluability": "EVALUABLE",
+          "semantic_decision": "SATISFIED",
+          "earned_points": 1,
+          "max_points": 1,
+          "score_reason": "Expected direct evidence for Train/evaluate using the supplied JudgeTiny v1 CSV bytes identified by trusted SHA-256.",
+          "evidence_ids": [
+            "dataset.1-evidence"
+          ],
+          "failure_kind": null,
+          "absence_proof": null
+        }
+      ],
+      "evaluability": "EVALUABLE",
+      "semantic_decision": "SATISFIED",
+      "earned_points": 1.0,
+      "max_points": 1,
+      "evidence": [
+        {
+          "evidence_id": "dataset.1-evidence",
+          "location": "candidate/notebook.ipynb",
+          "description": "Expected direct evidence for Train/evaluate using the supplied JudgeTiny v1 CSV bytes identified by trusted SHA-256.",
+          "evidence_class": "DIRECT",
+          "provenance": "SUBMITTED",
+          "dataset_strength": null
+        }
+      ],
+      "confidence": "HIGH",
+      "flags": [],
+      "failed_clauses": [],
+      "absence_proof_summary": null,
+      "dependency_aware_status": "SATISFIED",
+      "inspection_limitations": []
+    },
+    {
+      "requirement_id": "model",
+      "parent_rubric_item": "model",
+      "exact_text": "Use sklearn Ridge(alpha=1.0) in the model Pipeline.",
+      "mandatory": true,
+      "prerequisites": [],
+      "clauses": [
+        {
+          "clause_id": "model.1",
+          "exact_text": "Use sklearn Ridge(alpha=1.0) in the model Pipeline.",
+          "evidence_obligation": "IMPLEMENTATION",
+          "mandatory": true,
+          "evaluability": "EVALUABLE",
+          "semantic_decision": "SATISFIED",
+          "earned_points": 1,
+          "max_points": 1,
+          "score_reason": "Expected direct evidence for Use sklearn Ridge(alpha=1.0) in the model Pipeline.",
+          "evidence_ids": [
+            "model.1-evidence"
+          ],
+          "failure_kind": null,
+          "absence_proof": null
+        }
+      ],
+      "evaluability": "EVALUABLE",
+      "semantic_decision": "SATISFIED",
+      "earned_points": 1.0,
+      "max_points": 1,
+      "evidence": [
+        {
+          "evidence_id": "model.1-evidence",
+          "location": "candidate/notebook.ipynb",
+          "description": "Expected direct evidence for Use sklearn Ridge(alpha=1.0) in the model Pipeline.",
+          "evidence_class": "DIRECT",
+          "provenance": "SUBMITTED",
+          "dataset_strength": null
+        }
+      ],
+      "confidence": "HIGH",
+      "flags": [],
+      "failed_clauses": [],
+      "absence_proof_summary": null,
+      "dependency_aware_status": "SATISFIED",
+      "inspection_limitations": []
+    }
+  ],
+  "scoring": {
+    "mode": "WEIGHTED",
+    "allocation_source": "RUBRIC",
+    "policy_source": "rubric.json: explicit clause weights",
+    "rounding": {
+      "decimal_places": 2,
+      "mode": "ROUND_HALF_UP"
+    },
+    "content_cap": null,
+    "penalty_cap": null,
+    "not_evaluable_policy": "PRESERVE_NULL",
+    "coercion_source": null,
+    "earned_points": 9.0,
+    "max_points": 10.0,
+    "known_earned_points": 9.0,
+    "unresolved_max_points": 0.0,
+    "final_points": 9.0
+  },
+  "penalties": [],
+  "preference_scores": [],
+  "runtime_runs": [],
+  "flags": [
+    "DATA_LEAKAGE_RISK"
+  ],
+  "inspection_limitations": [],
+  "loaded_references": [],
+  "access_log": [],
+  "lock": null,
+  "post_reference_audit": []
+}

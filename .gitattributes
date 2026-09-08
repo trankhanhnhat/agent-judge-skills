@@ -1,0 +1,9 @@
+* text=auto
+*.md text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+# Preserve evidence bytes and SHA-256 across Windows/Linux checkouts.
+tests/fixtures/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/evaluations/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Matplotlib SVG path data contains generated trailing spaces; retain original bytes.
+*.svg -whitespace

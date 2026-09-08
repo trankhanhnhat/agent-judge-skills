@@ -1,0 +1,10 @@
+{
+  "task.md": "TASK_SOURCE",
+  "rubric.json": "RUBRIC",
+  "expected.judgment.json": "GOLD_LABEL",
+  "expected-flags.json": "GOLD_LABEL",
+  "README.md": "CONTEXT_ONLY",
+  "candidate/notebook.ipynb": "CANDIDATE",
+  "candidate/residual.svg": "CANDIDATE",
+  "candidate/tiny.csv": "CANDIDATE"
+}

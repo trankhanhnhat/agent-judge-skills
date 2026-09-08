@@ -1,0 +1,33 @@
+{
+  "case": "notebook_wrong_dataset",
+  "tp": 9,
+  "tn": 1,
+  "fp": 0,
+  "fn": 0,
+  "mismatches": [],
+  "earned_points": 9.0,
+  "known_earned_points": 9.0,
+  "max_points": 10.0,
+  "runtime": "PASS",
+  "lock": {
+    "path": "pre-reference.json",
+    "sha256": "22df531b1dbdb95505ab87309120e272b15ee8af35cd95eb9ce14ce59867cf57"
+  },
+  "reference_files_loaded": [
+    "references/input-roles.md",
+    "references/mode-notebook-ml.md",
+    "references/rubric-scoring.md",
+    "references/safe-candidate-execution.md",
+    "references/runtime-verification.md",
+    "references/provenance.md",
+    "references/notebook-execution.md",
+    "references/dataset-provenance.md",
+    "references/mode-artifact.md",
+    "references/flags-full.md",
+    "references/output-contract.md"
+  ],
+  "gated_file_reads": 7,
+  "skill_reference_reads": 12,
+  "agent_tool_calls": null,
+  "note": "File-access order is measured; fixture author knew expected cases. No strict-blind LLM accuracy claim."
+}

@@ -1,24 +1,33 @@
-# Named dataset provenance
+# Dataset identity and use
 
-Establish whether a specifically named dataset/source in the locked
-contract is actually the data used by the candidate.
+Authority for named-source decisions. Check only contract-required version/split/
+subset constraints or those needed to trace evidence; a generic loader has no
+invented named-dataset requirement.
 
-## Strong identity evidence
-One or more of the following, preferably corroborating:
-- source/download/API metadata tied to the named dataset;
-- loader configuration resolving to that source;
-- schema/content/domain fields characteristic of the dataset;
-- dataset manifest/version/hash or trusted metadata;
-- notebook/code references plus actual configured path/content.
+| Strength | Examples | Sufficiency |
+|---|---|---|
+| IDENTITY_DIRECT | Trusted manifest/hash matches actual loaded bytes; verified source/version/content | Sufficient when linked to required actual use |
+| IDENTITY_CORROBORATING | Characteristic schema/content, loader URL/config, independent metadata | Supports identity; self-asserted metadata alone is insufficient |
+| CLAIM_ONLY | Filename, variable, folder, README | Insufficient alone |
 
-## Weak evidence
-A filename, variable name, README claim, or folder name alone is not dataset identity.
-Use `WEAK_DATASET_PROVENANCE` when identity is inferred mainly from such claims.
+Trace identity -> version -> split -> subset -> transformations -> loader config
+-> actual train/eval use -> metric/artifact. An unused correct download cannot prove
+actual use. A candidate's own hash proves consistency, not authenticity, unless
+matched against a trusted source.
 
-## Synthetic stand-ins
-If a mandatory clause requires a named real dataset and the candidate instead uses
-synthetic/generated stand-in data without permission, record `SYNTHETIC_STANDIN` and
-fail that explicit dataset clause.
+## Outcomes
 
-If the rubric only asks for a generic CSV/input loader, do not invent a named-dataset
-provenance requirement.
+- `SATISFIED`: direct identity or independently corroborated provenance/content
+  resolves identity, with actual use and all explicit constraints supported.
+- `UNSATISFIED`: decisive wrong source/version/subset/use or unallowed synthetic
+  substitution. Also fail a separate explicit provenance-document submission clause
+  when absence-proved missing.
+- `NOT_EVALUABLE`: names/claims only, inaccessible evidence, or unresolved identity
+  without contradiction. Lack of proof is not automatically proof of wrong data.
+- `WEAK_DATASET_PROVENANCE`: mainly weak claimed identity; diagnostic only.
+- `SYNTHETIC_STANDIN`: observed generation replacing a required source without
+  permission; cite the code/content, not the flag, as failure evidence. Permitted
+  synthetic data does not trigger it.
+
+The right dataset with contaminated evaluation may pass identity and fail protocol
+independently.

@@ -99,8 +99,9 @@ Expected: `EVALUABLE`, `UNSATISFIED`; explicit held-out clause violated; `DATA_L
 Requirement explicitly requires Sentiment140.
 Candidate loads `sentiment140.csv`; no source/schema/metadata/content evidence establishes
 identity.
-Expected: `EVALUABLE`, `UNSATISFIED` for the mandatory dataset-identity clause after evidence
-search; `WEAK_DATASET_PROVENANCE`. Do not treat filename as proof.
+Expected: `NOT_EVALUABLE` for identity if only weak evidence remains and no wrong
+source is established; `WEAK_DATASET_PROVENANCE`. Proven wrong data is UNSATISFIED.
+An explicitly required provenance document can separately fail after absence proof.
 
 ## ARTIFACT_MODE
 
